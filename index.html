@@ -11,41 +11,24 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --forest: #1c2b1e;
-      --sage: #b4d2a0;
-      --cream: #f7f4ef;
-      --muted: #888;
-      --border: rgba(28,43,30,0.12);
-    }
-
     html, body {
       min-height: 100%;
-      background: var(--cream);
+      background: #ffffff;
       font-family: 'DM Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     body {
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 0;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 420px;
-      min-height: 100svh;
-      display: flex;
       flex-direction: column;
-      background: var(--cream);
+      align-items: stretch;
+      min-height: 100svh;
     }
 
-    /* ── Hero ── */
     .hero {
-      background: var(--forest);
-      padding: 52px 28px 36px;
+      width: 100%;
+      background: #111111;
+      padding: 52px 0 36px;
       position: relative;
       overflow: hidden;
     }
@@ -55,7 +38,7 @@
       top: -60px; right: -60px;
       width: 220px; height: 220px;
       border-radius: 50%;
-      background: rgba(180,210,160,0.06);
+      background: rgba(255,255,255,0.03);
       pointer-events: none;
     }
     .hero::after {
@@ -64,109 +47,119 @@
       bottom: -30px; left: 10px;
       width: 120px; height: 120px;
       border-radius: 50%;
-      background: rgba(180,210,160,0.04);
+      background: rgba(255,255,255,0.02);
       pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
     }
 
     .avatar {
       width: 60px; height: 60px;
       border-radius: 50%;
-      background: var(--sage);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Serif Display', serif;
-      font-size: 26px;
-      color: var(--forest);
+      overflow: hidden;
       margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
+      flex-shrink: 0;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .hero-name {
       font-family: 'DM Serif Display', serif;
       font-size: 34px;
-      color: var(--cream);
+      color: #ffffff;
       line-height: 1.05;
       margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-company {
       font-size: 11px;
       font-weight: 400;
-      color: var(--sage);
-      letter-spacing: 0.1em;
+      color: #888;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      position: relative;
-      z-index: 1;
     }
 
     .accent-line {
-      width: 32px; height: 2px;
-      background: var(--sage);
+      width: 32px; height: 1.5px;
+      background: #444;
       border-radius: 2px;
       margin-top: 20px;
-      position: relative;
-      z-index: 1;
     }
 
-    /* ── Contact rows ── */
     .contacts {
-      padding: 8px 0;
       flex: 1;
+      padding: 8px 0;
+      background: #ffffff;
     }
 
     .contact-link {
       display: flex;
       align-items: center;
       gap: 16px;
+      max-width: 420px;
+      margin: 0 auto;
       padding: 16px 28px;
       text-decoration: none;
-      border-bottom: 0.5px solid var(--border);
+      border-bottom: 0.5px solid rgba(0,0,0,0.09);
       transition: background 0.15s;
       -webkit-tap-highlight-color: transparent;
     }
     .contact-link:last-child { border-bottom: none; }
-    .contact-link:active { background: rgba(28,43,30,0.04); }
+    .contact-link:active { background: #f5f5f5; }
 
     .icon-wrap {
       width: 38px; height: 38px;
       border-radius: 10px;
-      background: var(--forest);
+      background: #111111;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
     .icon-wrap svg {
       width: 16px; height: 16px;
       fill: none;
-      stroke: var(--sage);
+      stroke: #aaa;
       stroke-width: 1.8;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     .contact-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-    .contact-label { font-size: 10px; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; }
-    .contact-value { font-size: 14px; color: var(--forest); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .contact-label { font-size: 10px; color: #999; letter-spacing: 0.07em; text-transform: uppercase; }
+    .contact-value { font-size: 14px; color: #111; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
     .chevron { margin-left: auto; flex-shrink: 0; }
     .chevron svg { width: 14px; height: 14px; fill: none; stroke: #ccc; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* ── Footer ── */
     .card-footer {
-      background: var(--forest);
-      padding: 16px 28px;
+      width: 100%;
+      background: #111111;
+      padding: 16px 0;
+    }
+
+    .footer-inner {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 0 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
 
-    .footer-brand { font-size: 11px; color: rgba(180,210,160,0.7); letter-spacing: 0.05em; }
+    .footer-brand { font-size: 11px; color: #555; letter-spacing: 0.05em; }
 
     .save-btn {
-      background: var(--sage);
-      color: var(--forest);
+      background: #fff;
+      color: #111;
       font-family: 'DM Sans', sans-serif;
       font-size: 12px;
       font-weight: 500;
@@ -177,15 +170,14 @@
       transition: opacity 0.15s;
       white-space: nowrap;
     }
-    .save-btn:active { opacity: 0.8; }
+    .save-btn:active { opacity: 0.75; }
 
-    /* ── Toast ── */
     .toast {
       position: fixed;
       bottom: 24px; left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: var(--forest);
-      color: var(--sage);
+      background: #111;
+      color: #fff;
       font-size: 13px;
       padding: 10px 20px;
       border-radius: 24px;
@@ -203,68 +195,90 @@
   </style>
 </head>
 <body>
-  <div class="card">
 
-    <div class="hero">
-      <div class="avatar">D</div>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="avatar"><img src="data:image/png;base64,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" alt="MA Construction and Design logo" /></div>
       <h1 class="hero-name">Dinesh</h1>
       <p class="hero-company">MA Construction &amp; Design</p>
       <div class="accent-line"></div>
     </div>
+  </div>
 
-    <div class="contacts">
+  <div class="contacts">
 
-      <a class="contact-link" href="tel:+916381703191">
-        <div class="icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0015.1 17.9l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
-        <div class="contact-text">
-          <span class="contact-label">Phone</span>
-          <span class="contact-value">+91 63817 03191</span>
-        </div>
-        <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </a>
+    <a class="contact-link" href="tel:+916381703191">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0015.1 17.9l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <div class="contact-text">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">+91 63817 03191</span>
+      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
 
-      <a class="contact-link" href="mailto:dinesh@maconstructiondesign.com">
-        <div class="icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <div class="contact-text">
-          <span class="contact-label">Email</span>
-          <span class="contact-value">dinesh@maconstructiondesign.com</span>
-        </div>
-        <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </a>
+    <a class="contact-link" href="mailto:dinesh@maconstructiondesign.com">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="contact-text">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">dinesh@maconstructiondesign.com</span>
+      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
 
-      <a class="contact-link" href="https://maconstructiondesign.com" target="_blank" rel="noopener">
-        <div class="icon-wrap">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        </div>
-        <div class="contact-text">
-          <span class="contact-label">Website</span>
-          <span class="contact-value">maconstructiondesign.com</span>
-        </div>
-        <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </a>
+    <a class="contact-link" href="https://maconstructiondesign.com" target="_blank" rel="noopener">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <div class="contact-text">
+        <span class="contact-label">Website</span>
+        <span class="contact-value">maconstructiondesign.com</span>
+      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
 
-      <a class="contact-link" href="https://maps.app.goo.gl/uFrR7H1TnLLFC1UW9?g_st=iw" target="_blank" rel="noopener">
-        <div class="icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="contact-text">
-          <span class="contact-label">Address</span>
-          <span class="contact-value">101, Medavakkam Main Rd, Chennai</span>
-        </div>
-        <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </a>
+    <a class="contact-link" href="https://www.instagram.com/m.a._constructions?igsh=MWxxeDlrMTluc3htMw==" target="_blank" rel="noopener">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <div class="contact-text">
+        <span class="contact-label">Instagram</span>
+        <span class="contact-value">@m.a._constructions</span>
+      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
 
+    <a class="contact-link" href="https://maps.app.goo.gl/uFrR7H1TnLLFC1UW9?g_st=iw" target="_blank" rel="noopener">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="contact-text">
+        <span class="contact-label">Address</span>
+        <span class="contact-value">101, Medavakkam Main Rd, Chennai</span>
+      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <div class="contact-link" style="cursor:default;">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="contact-text">
+        <span class="contact-label">Working hours</span>
+        <span class="contact-value">Mon – Sat, 9:00 am – 5:30 pm</span>
+      </div>
     </div>
 
-    <div class="card-footer">
+  </div>
+
+  <div class="card-footer">
+    <div class="footer-inner">
       <span class="footer-brand">MA Construction &amp; Design</span>
-      <button class="save-btn" onclick="saveContact()">Save contact</button>
+      <button class="save-btn" onclick="saveContact()">Add to contacts</button>
     </div>
-
   </div>
 
   <div class="toast" id="toast">Contact saved!</div>
